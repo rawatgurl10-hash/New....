@@ -1,0 +1,454 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Candidate Interview Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5e8ff, #ffe4f2);
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(100, 40, 120, 0.20);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #7b2cbf, #d63384);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* Form */
+        .form-section {
+            padding: 35px;
+        }
+
+        .section-title {
+            color: #7b2cbf;
+            font-size: 21px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0d5ff;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #4a3158;
+        }
+
+        label span {
+            color: #d63384;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1.5px solid #ddd0e8;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.12);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        button {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn {
+            flex: 1;
+            color: white;
+            background: linear-gradient(135deg, #7b2cbf, #d63384);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(123, 44, 191, 0.3);
+        }
+
+        .reset-btn {
+            background: #f1e5f7;
+            color: #7b2cbf;
+        }
+
+        .reset-btn:hover {
+            background: #e5d2ef;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #e9d5ff;
+            color: #5b21b6;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 18px;
+            background: #faf5ff;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            body {
+                padding: 15px;
+            }
+
+            .form-section {
+                padding: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Candidate Interview Form</h1>
+            <p>Please fill in your personal information carefully</p>
+        </div>
+
+        <!-- Form -->
+        <div class="form-section">
+
+            <h2 class="section-title">Personal Information</h2>
+
+            <form id="candidateForm">
+
+                <div class="form-grid">
+
+                    <!-- 1 -->
+                    <div class="form-group">
+                        <label>Full Name <span>*</span></label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter full name"
+                            required
+                        >
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="form-group">
+                        <label>Phone Number <span>*</span></label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            maxlength="10"
+                            required
+                        >
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="form-group">
+                        <label>Email Address <span>*</span></label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter email address"
+                            required
+                        >
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="form-group">
+                        <label>Date of Birth <span>*</span></label>
+                        <input
+                            type="date"
+                            id="dob"
+                            required
+                        >
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="form-group">
+                        <label>Gender <span>*</span></label>
+                        <select id="gender" required>
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="form-group">
+                        <label>Nationality <span>*</span></label>
+                        <input
+                            type="text"
+                            id="nationality"
+                            placeholder="Enter nationality"
+                            required
+                        >
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="form-group">
+                        <label>Current City <span>*</span></label>
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Enter current city"
+                            required
+                        >
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="form-group">
+                        <label>Highest Qualification <span>*</span></label>
+                        <select id="qualification" required>
+                            <option value="">Select qualification</option>
+                            <option>10th</option>
+                            <option>12th</option>
+                            <option>Diploma</option>
+                            <option>Graduate</option>
+                            <option>Post Graduate</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- 9 -->
+                    <div class="form-group">
+                        <label>College / University</label>
+                        <input
+                            type="text"
+                            id="college"
+                            placeholder="Enter college/university"
+                        >
+                    </div>
+
+                    <!-- 10 -->
+                    <div class="form-group">
+                        <label>Current Occupation</label>
+                        <input
+                            type="text"
+                            id="occupation"
+                            placeholder="Enter occupation"
+                        >
+                    </div>
+
+                    <!-- 11 -->
+                    <div class="form-group">
+                        <label>Total Work Experience</label>
+                        <select id="experience">
+                            <option value="">Select experience</option>
+                            <option>Fresher</option>
+                            <option>Less than 1 year</option>
+                            <option>1–2 years</option>
+                            <option>3–5 years</option>
+                            <option>5+ years</option>
+                        </select>
+                    </div>
+
+                    <!-- 12 -->
+                    <div class="form-group">
+                        <label>Expected Salary</label>
+                        <input
+                            type="number"
+                            id="salary"
+                            placeholder="Enter expected salary"
+                            min="0"
+                        >
+                    </div>
+
+                    <!-- 13 -->
+                    <div class="form-group">
+                        <label>Preferred Job Role <span>*</span></label>
+                        <input
+                            type="text"
+                            id="jobRole"
+                            placeholder="e.g. Software Developer"
+                            required
+                        >
+                    </div>
+
+                    <!-- 14 -->
+                    <div class="form-group">
+                        <label>Preferred Interview Date <span>*</span></label>
+                        <input
+                            type="date"
+                            id="interviewDate"
+                            required
+                        >
+                    </div>
+
+                    <!-- 15 -->
+                    <div class="form-group full">
+                        <label>Address</label>
+                        <textarea
+                            id="address"
+                            placeholder="Enter your complete address"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="buttons">
+                    <button type="submit" class="submit-btn">
+                        Submit Application
+                    </button>
+
+                    <button type="reset" class="reset-btn">
+                        Reset Form
+                    </button>
+                </div>
+
+                <!-- Success -->
+                <div class="success-message" id="successMessage">
+                    ✓ Candidate information submitted successfully!
+                </div>
+
+            </form>
+        </div>
+
+        <div class="footer">
+            © 2026 Candidate Interview Portal | All Rights Reserved
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("candidateForm");
+        const successMessage = document.getElementById("successMessage");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const phone = document.getElementById("phone").value.trim();
+
+            // Phone validation
+            if (!/^[0-9]{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Show success message
+            successMessage.style.display = "block";
+
+            // Scroll to success message
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = "none";
+            }, 5000);
+        });
+
+        // Allow only numbers in phone field
+        document.getElementById("phone").addEventListener("input", function() {
+            this.value = this.value.replace(/[^0-9]/g, "");
+        });
+    </script>
+
+</body>
+</html>
+```
